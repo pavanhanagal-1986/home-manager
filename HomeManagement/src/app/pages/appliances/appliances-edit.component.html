@@ -1,0 +1,23 @@
+<div class="card">
+  <h2 *ngIf="editingId; else newTitle">Edit Appliance</h2>
+  <ng-template #newTitle><h2>New Appliance</h2></ng-template>
+
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <div class="form-row">
+      <input class="input" placeholder="Name" formControlName="name" />
+      <input class="input" placeholder="Brand" formControlName="brand" />
+    </div>
+    <div class="form-row" style="margin-top:8px">
+      <input class="input" placeholder="Model" formControlName="model" />
+      <input class="input" placeholder="Location" formControlName="location" />
+    </div>
+    <div style="margin-top:8px">
+      <textarea class="input" rows="4" placeholder="Notes" formControlName="notes"></textarea>
+    </div>
+
+    <div style="margin-top:12px">
+      <button class="btn" type="submit">Save</button>
+      <a routerLink="/appliances" style="margin-left:8px">Cancel</a>
+    </div>
+  </form>
+</div>

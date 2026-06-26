@@ -1,0 +1,23 @@
+<div class="header maintenance-header">
+  <h2>Maintenance</h2>
+</div>
+
+<div class="page-action">
+  <button class="btn" routerLink="new">Add</button>
+</div>
+
+<div class="grid">
+  <ng-container *ngIf="items$ | async as list">
+    <div *ngIf="list.length === 0" class="empty-state">No maintenance item added</div>
+    <div *ngFor="let m of list" class="card">
+      <h3>{{m.title}}</h3>
+      <div class="small">Status: {{m.status || 'pending'}}</div>
+      <div style="margin-top:8px">Next Due: {{m.nextDue || '—'}}</div>
+      <div style="margin-top:8px">
+        <a [routerLink]="[m.id]">View</a>
+        <a [routerLink]="[m.id, 'edit']" style="margin-left:8px">Edit</a>
+        <button style="margin-left:8px" (click)="remove(m.id)">Delete</button>
+      </div>
+    </div>
+  </ng-container>
+</div>

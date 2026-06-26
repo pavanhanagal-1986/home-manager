@@ -1,0 +1,22 @@
+<div class="header vehicles-header">
+  <h2>Vehicles</h2>
+</div>
+
+<div class="page-action">
+  <button class="btn" routerLink="new">Add</button>
+</div>
+
+<div class="grid">
+  <ng-container *ngIf="vehicles$ | async as list">
+    <div *ngIf="list.length === 0" class="empty-state">No vehicle added</div>
+    <div *ngFor="let v of list" class="card">
+      <h3>{{v.make}} {{v.model}}</h3>
+      <div class="small">Year: {{v.year || '—'}} | Mileage: {{v.mileage || '—'}} km</div>
+      <div style="margin-top:8px">
+        <a [routerLink]="[v.id]">View</a>
+        <a [routerLink]="[v.id, 'edit']" style="margin-left:8px">Edit</a>
+        <button style="margin-left:8px" (click)="remove(v.id)">Delete</button>
+      </div>
+    </div>
+  </ng-container>
+</div>

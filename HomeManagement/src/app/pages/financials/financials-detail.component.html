@@ -1,0 +1,11 @@
+<div *ngIf="item" class="card">
+  <h2>{{item.title}}</h2>
+  <div class="small">Type: {{item.type}} | Amount: {{item.currency || 'USD'}} {{item.amount}}</div>
+  <div style="margin-top:8px">Due Date: {{item.dueDate || '—'}}</div>
+  <div style="margin-top:8px">Recurring: {{item.recurring ? 'Yes' : 'No'}}</div>
+  <div style="margin-top:8px">Notes: {{item.notes || '—'}}</div>
+  <div style="margin-top:12px">
+    <a [routerLink]="[item.id, 'edit']">Edit</a>
+    <a routerLink="/financials" style="margin-left:8px">Back</a>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="header appliances-header">
+  <h2>Appliances</h2>
+</div>
+
+<div class="page-action">
+  <button class="btn" routerLink="/appliances/new">Add</button>
+  <button class="btn" (click)="seedSample()">Seed</button>
+</div>
+
+<div class="grid">
+  <ng-container *ngIf="appliances$ | async as list">
+    <div *ngIf="list.length === 0" class="empty-state">No appliance added</div>
+    <div *ngFor="let a of list" class="card">
+      <h3>{{a.name}}</h3>
+      <div class="small">{{a.brand}} {{a.model}}</div>
+      <div style="margin-top:8px">
+        <a [routerLink]="['/appliances', a.id]">View</a>
+        <a [routerLink]="['/appliances', a.id, 'edit']" style="margin-left:8px">Edit</a>
+        <button style="margin-left:8px" (click)="remove(a.id)">Delete</button>
+      </div>
+    </div>
+  </ng-container>
+</div>

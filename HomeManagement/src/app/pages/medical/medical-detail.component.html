@@ -1,0 +1,11 @@
+<div *ngIf="item" class="card">
+  <h2>{{item.person}}</h2>
+  <div class="small">Type: {{item.type}}</div>
+  <div style="margin-top:8px">Date: {{item.date || '—'}}</div>
+  <div style="margin-top:8px">Provider: {{item.provider || '—'}}</div>
+  <div style="margin-top:8px">Notes: {{item.notes || '—'}}</div>
+  <div style="margin-top:12px">
+    <a [routerLink]="[item.id, 'edit']">Edit</a>
+    <a routerLink="/medical" style="margin-left:8px">Back</a>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="card">
+  <h2 *ngIf="editingId; else newTitle">Edit Financial Record</h2>
+  <ng-template #newTitle><h2>New Financial Record</h2></ng-template>
+
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <div class="form-row">
+      <input class="input" placeholder="Title" formControlName="title" required />
+      <select class="input" formControlName="type">
+        <option value="bill">Bill</option>
+        <option value="subscription">Subscription</option>
+        <option value="expense">Expense</option>
+        <option value="income">Income</option>
+      </select>
+    </div>
+    <div class="form-row" style="margin-top:8px">
+      <input class="input" placeholder="Amount" formControlName="amount" type="number" required />
+      <input class="input" placeholder="Currency" formControlName="currency" />
+    </div>
+    <div class="form-row" style="margin-top:8px">
+      <input class="input" placeholder="Due Date" formControlName="dueDate" type="date" />
+      <label style="margin-left:8px">
+        <input type="checkbox" formControlName="recurring" /> Recurring
+      </label>
+    </div>
+    <div style="margin-top:8px">
+      <textarea class="input" placeholder="Notes" formControlName="notes" rows="3"></textarea>
+    </div>
+
+    <div style="margin-top:12px">
+      <button class="btn" type="submit">Save</button>
+      <a routerLink="/financials" style="margin-left:8px">Cancel</a>
+    </div>
+  </form>
+</div>

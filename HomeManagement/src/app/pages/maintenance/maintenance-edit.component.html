@@ -1,0 +1,30 @@
+<div class="card">
+  <h2 *ngIf="editingId; else newTitle">Edit Maintenance</h2>
+  <ng-template #newTitle><h2>New Maintenance</h2></ng-template>
+
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <div class="form-row">
+      <input class="input" placeholder="Title" formControlName="title" required />
+      <select class="input" formControlName="status">
+        <option value="pending">Pending</option>
+        <option value="done">Done</option>
+        <option value="skipped">Skipped</option>
+      </select>
+    </div>
+    <div style="margin-top:8px">
+      <textarea class="input" placeholder="Description" formControlName="description" rows="3"></textarea>
+    </div>
+    <div class="form-row" style="margin-top:8px">
+      <input class="input" placeholder="Next Due Date" formControlName="nextDue" type="date" />
+      <input class="input" placeholder="Recurrence (e.g. monthly, yearly)" formControlName="recurrence" />
+    </div>
+    <div style="margin-top:8px">
+      <input class="input" placeholder="Assigned To" formControlName="assignedTo" />
+    </div>
+
+    <div style="margin-top:12px">
+      <button class="btn" type="submit">Save</button>
+      <a routerLink="/maintenance" style="margin-left:8px">Cancel</a>
+    </div>
+  </form>
+</div>

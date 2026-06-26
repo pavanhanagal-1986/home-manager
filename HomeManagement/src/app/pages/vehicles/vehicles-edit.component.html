@@ -1,0 +1,24 @@
+<div class="card">
+  <h2 *ngIf="editingId; else newTitle">Edit Vehicle</h2>
+  <ng-template #newTitle><h2>New Vehicle</h2></ng-template>
+
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <div class="form-row">
+      <input class="input" placeholder="Make" formControlName="make" required />
+      <input class="input" placeholder="Model" formControlName="model" required />
+    </div>
+    <div class="form-row" style="margin-top:8px">
+      <input class="input" placeholder="Year" formControlName="year" type="number" />
+      <input class="input" placeholder="Mileage (km)" formControlName="mileage" type="number" />
+    </div>
+    <div class="form-row" style="margin-top:8px">
+      <input class="input" placeholder="VIN" formControlName="vin" />
+      <input class="input" placeholder="Last Service Date" formControlName="lastServiceDate" type="date" />
+    </div>
+
+    <div style="margin-top:12px">
+      <button class="btn" type="submit">Save</button>
+      <a routerLink="/vehicles" style="margin-left:8px">Cancel</a>
+    </div>
+  </form>
+</div>

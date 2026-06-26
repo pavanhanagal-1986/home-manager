@@ -1,0 +1,23 @@
+<div class="header financials-header">
+  <h2>Financials</h2>
+</div>
+
+<div class="page-action">
+  <button class="btn" routerLink="new">Add</button>
+</div>
+
+<div class="grid">
+  <ng-container *ngIf="items$ | async as list">
+    <div *ngIf="list.length === 0" class="empty-state">No financial record added</div>
+    <div *ngFor="let f of list" class="card">
+      <h3>{{f.title}}</h3>
+      <div class="small">{{f.type}} | {{f.currency || 'USD'}} {{f.amount}}</div>
+      <div style="margin-top:8px">Due: {{f.dueDate || '—'}} | Recurring: {{f.recurring ? 'Yes' : 'No'}}</div>
+      <div style="margin-top:8px">
+        <a [routerLink]="[f.id]">View</a>
+        <a [routerLink]="[f.id, 'edit']" style="margin-left:8px">Edit</a>
+        <button style="margin-left:8px" (click)="remove(f.id)">Delete</button>
+      </div>
+    </div>
+  </ng-container>
+</div>

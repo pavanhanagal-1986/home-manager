@@ -1,0 +1,28 @@
+<div class="card">
+  <h2 *ngIf="editingId; else newTitle">Edit Medical Record</h2>
+  <ng-template #newTitle><h2>New Medical Record</h2></ng-template>
+
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <div class="form-row">
+      <input class="input" placeholder="Person Name" formControlName="person" required />
+      <select class="input" formControlName="type">
+        <option value="prescription">Prescription</option>
+        <option value="appointment">Appointment</option>
+        <option value="allergy">Allergy</option>
+        <option value="immunization">Immunization</option>
+      </select>
+    </div>
+    <div class="form-row" style="margin-top:8px">
+      <input class="input" placeholder="Date" formControlName="date" type="date" />
+      <input class="input" placeholder="Provider" formControlName="provider" />
+    </div>
+    <div style="margin-top:8px">
+      <textarea class="input" placeholder="Notes" formControlName="notes" rows="3"></textarea>
+    </div>
+
+    <div style="margin-top:12px">
+      <button class="btn" type="submit">Save</button>
+      <a routerLink="/medical" style="margin-left:8px">Cancel</a>
+    </div>
+  </form>
+</div>

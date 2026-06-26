@@ -1,0 +1,11 @@
+<div *ngIf="item" class="card">
+  <h2>{{item.make}} {{item.model}}</h2>
+  <div class="small">Year: {{item.year}}</div>
+  <div style="margin-top:8px">VIN: {{item.vin || '—'}}</div>
+  <div style="margin-top:8px">Mileage: {{item.mileage || '—'}} km</div>
+  <div style="margin-top:8px">Last Service: {{item.lastServiceDate || '—'}}</div>
+  <div style="margin-top:12px">
+    <a [routerLink]="[item.id, 'edit']">Edit</a>
+    <a routerLink="/vehicles" style="margin-left:8px">Back</a>
+  </div>
+</div>

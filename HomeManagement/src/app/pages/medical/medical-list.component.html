@@ -1,0 +1,23 @@
+<div class="header medical-header">
+  <h2>Medical</h2>
+</div>
+
+<div class="page-action">
+  <button class="btn" routerLink="new">Add</button>
+</div>
+
+<div class="grid">
+  <ng-container *ngIf="items$ | async as list">
+    <div *ngIf="list.length === 0" class="empty-state">No medical record added</div>
+    <div *ngFor="let m of list" class="card">
+      <h3>{{m.person}}</h3>
+      <div class="small">{{m.type}}</div>
+      <div style="margin-top:8px">Date: {{m.date || '—'}} | Provider: {{m.provider || '—'}}</div>
+      <div style="margin-top:8px">
+        <a [routerLink]="[m.id]">View</a>
+        <a [routerLink]="[m.id, 'edit']" style="margin-left:8px">Edit</a>
+        <button style="margin-left:8px" (click)="remove(m.id)">Delete</button>
+      </div>
+    </div>
+  </ng-container>
+</div>

@@ -1,0 +1,10 @@
+<div *ngIf="item" class="card">
+  <h2>{{item.name}}</h2>
+  <div class="small">{{item.brand}} {{item.model}}</div>
+  <div style="margin-top:8px">Location: {{item.location || '—'}}</div>
+  <div style="margin-top:8px">Notes: {{item.notes || '—'}}</div>
+  <div style="margin-top:12px">
+    <a [routerLink]="['/appliances', item.id, 'edit']">Edit</a>
+    <a routerLink="/appliances" style="margin-left:8px">Back</a>
+  </div>
+</div>
